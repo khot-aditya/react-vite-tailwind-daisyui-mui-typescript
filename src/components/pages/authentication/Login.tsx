@@ -1,12 +1,9 @@
-import React from 'react'
-import PrimaryButton from '../../atoms/PrimaryButton'
-
 const Login = () => {
     return (
         <div>
-            <PrimaryButton>
-                primary button
-            </PrimaryButton>
+            <div className="App w-full h-screen flex justify-center items-center">
+                <button className="btn btn-primary">Hello daisyUI</button>
+            </div>
         </div>
     )
 }

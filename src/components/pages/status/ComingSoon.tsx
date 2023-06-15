@@ -1,183 +1,32 @@
-import { useEffect, useState } from 'react';
-import {
-  Box,
-  Typography,
-  Container,
-  Divider,
-  OutlinedInput,
-  IconButton,
-  Tooltip,
-  FormControl,
-  InputAdornment,
-  Button,
-  FormHelperText
-} from '@mui/material';
 import { Helmet } from 'react-helmet-async';
-import Logo from 'src/components/Atoms/Presets/LogoSign';
 
-import { styled } from '@mui/material/styles';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import MailTwoToneIcon from '@mui/icons-material/MailTwoTone';
-
-const MainContent = styled(Box)(
-  () => `
-    height: 100%;
-    display: flex;
-    flex: 1;
-    overflow: auto;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-`
-);
-
-const TypographyH1 = styled(Typography)(
-  ({ theme }) => `
-  font-size: ${theme.typography.pxToRem(75)};
-`
-);
-
-const TypographyH3 = styled(Typography)(
-  ({ theme }) => `
-  color: ${theme.colors.alpha.black[50]};
-`
-);
-
-const OutlinedInputWrapper = styled(OutlinedInput)(
-  ({ theme }) => `
-    background-color: ${theme.colors.alpha.white[100]};
-`
-);
-
-const ButtonNotify = styled(Button)(
-  ({ theme }) => `
-    margin-right: -${theme.spacing(1)};
-`
-);
-
-function StatusComingSoon() {
-  const calculateTimeLeft = () => {
-    const difference = +new Date(`2023`) - +new Date();
-    let timeLeft = {};
-
-    if (difference > 0) {
-      timeLeft = {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60)
-      };
-    }
-
-    return timeLeft;
-  };
-
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-
-  useEffect(() => {
-    setTimeout(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
-  });
-
-  const timerComponents = [];
-
-  Object.keys(timeLeft).forEach((interval) => {
-    if (!timeLeft[interval]) {
-      return;
-    }
-
-    timerComponents.push(
-      <Box textAlign="center" px={3}>
-        <TypographyH1 variant="h1">{timeLeft[interval]}</TypographyH1>
-        <TypographyH3 variant="h3">{interval}</TypographyH3>
-      </Box>
-    );
-  });
-
+function ComingSoon() {
   return (
     <>
       <Helmet>
-        <title>Status - Coming Soon</title>
+        <title>Status - ComingSoon</title>
       </Helmet>
-      <MainContent>
-        <Container maxWidth="md">
-          <Logo />
-          <Box textAlign="center" mb={3}>
-            <Container maxWidth="xs">
-              <Typography variant="h1" sx={{ mt: 4, mb: 2 }}>
-                Coming Soon
-              </Typography>
-              <Typography
-                variant="h3"
-                color="text.secondary"
-                fontWeight="normal"
-                sx={{ mb: 4 }}
-              >
-                We're working on implementing the last features before our
-                launch!
-              </Typography>
-            </Container>
-            <img
-              alt="Coming Soon"
-              height={200}
-              src="/static/images/status/coming-soon.svg"
-            />
-          </Box>
-
-          <Box display="flex" justifyContent="center">
-            {timerComponents.length ? timerComponents : <>Time's up!</>}
-          </Box>
-
-          <Container maxWidth="sm">
-            <Box sx={{ textAlign: 'center', p: 4 }}>
-              <FormControl variant="outlined" fullWidth>
-                <OutlinedInputWrapper
-                  type="text"
-                  placeholder="Enter your email address here..."
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <ButtonNotify variant="contained" size="small">
-                        Notify Me
-                      </ButtonNotify>
-                    </InputAdornment>
-                  }
-                  startAdornment={
-                    <InputAdornment position="start">
-                      <MailTwoToneIcon />
-                    </InputAdornment>
-                  }
-                />
-                <FormHelperText>
-                  We'll email you once our website is launched!
-                </FormHelperText>
-              </FormControl>
-              <Divider sx={{ my: 4 }} />
-              <Box sx={{ textAlign: 'center' }}>
-                <Tooltip arrow placement="top" title="Facebook">
-                  <IconButton color="primary">
-                    <FacebookIcon />
-                  </IconButton>
-                </Tooltip>
-                <Tooltip arrow placement="top" title="Twitter">
-                  <IconButton color="primary">
-                    <TwitterIcon />
-                  </IconButton>
-                </Tooltip>
-                <Tooltip arrow placement="top" title="Instagram">
-                  <IconButton color="primary">
-                    <InstagramIcon />
-                  </IconButton>
-                </Tooltip>
-              </Box>
-            </Box>
-          </Container>
-        </Container>
-      </MainContent>
+      <div className="bg-gray-200 w-full px-16 md:px-0 h-screen flex items-center justify-center">
+        <div className="bg-white border border-gray-200 flex flex-col items-center justify-center px-4 md:px-8 lg:px-24 py-8 rounded-lg shadow-2xl">
+          <p className="text-6xl md:text-7xl lg:text-9xl font-bold tracking-wider text-gray-300">Coming Soon</p>
+          <p className="text-2xl md:text-3xl lg:text-5xl font-bold tracking-wider text-gray-500 mt-4">
+            This page is coming soon.
+          </p>
+          <p className="text-gray-500 mt-4 pb-4 border-b-2 text-center">
+            Please check back later.
+          </p>
+          <a href="#" className="flex items-center space-x-2 bg-primary hover:bg-primary text-gray-100 px-4 py-2 mt-6 rounded transition duration-150" title="Return Home">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"></path>
+            </svg>
+            <span onClick={() => {
+              history.back();
+            }}>Return Home</span>
+          </a>
+        </div>
+      </div>
     </>
   );
 }
 
-export default StatusComingSoon;
+export default ComingSoon;

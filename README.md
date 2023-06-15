@@ -1,0 +1,1 @@
+# React + Vite + TailwindCSS + DaisyUI Template (TypeScript)

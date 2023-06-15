@@ -1,137 +1,30 @@
-import { useState } from 'react';
-import {
-  Box,
-  Typography,
-  Hidden,
-  Container,
-  Button,
-  Grid
-} from '@mui/material';
 import { Helmet } from 'react-helmet-async';
-import RefreshTwoToneIcon from '@mui/icons-material/RefreshTwoTone';
-import LoadingButton from '@mui/lab/LoadingButton';
-
-import { styled } from '@mui/material/styles';
-
-const GridWrapper = styled(Grid)(({ theme }) => ``);
-
-const MainContent = styled(Box)(
-  () => `
-    height: 100%;
-    display: flex;
-    flex: 1;
-    overflow: auto;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-`
-);
-
-const TypographyPrimary = styled(Typography)(
-  ({ theme }) => `
-      color: white;
-`
-);
-
-const TypographySecondary = styled(Typography)(
-  ({ theme }) => `
-      color: white;
-`
-);
 
 function Status500() {
-  const [pending, setPending] = useState(false);
-  function handleClick() {
-    setPending(true);
-  }
-
   return (
     <>
       <Helmet>
         <title>Status - 500</title>
       </Helmet>
-      <MainContent>
-        <Grid
-          container
-          sx={{ height: '100%' }}
-          alignItems="stretch"
-          spacing={0}
-        >
-          <Grid
-            xs={12}
-            md={6}
-            alignItems="center"
-            display="flex"
-            justifyContent="center"
-            item
-          >
-            <Container maxWidth="sm">
-              <Box textAlign="center">
-                <img
-                  alt="500"
-                  height={260}
-                  src="/static/images/status/500.svg"
-                />
-                <Typography variant="h2" sx={{ my: 2 }}>
-                  There was an error, please try again later
-                </Typography>
-                <Typography
-                  variant="h4"
-                  color="text.secondary"
-                  fontWeight="normal"
-                  sx={{ mb: 4 }}
-                >
-                  The server encountered an internal error and was not able to
-                  complete your request
-                </Typography>
-                <LoadingButton
-                  onClick={handleClick}
-                  loading={pending}
-                  variant="outlined"
-                  color="primary"
-                  startIcon={<RefreshTwoToneIcon />}
-                >
-                  Refresh view
-                </LoadingButton>
-                <Button href="/overview" variant="contained" sx={{ ml: 1 }}>
-                  Go back
-                </Button>
-              </Box>
-            </Container>
-          </Grid>
-          <Hidden mdDown>
-            <GridWrapper
-              className='bg-base-100'
-              xs={12}
-              md={6}
-              alignItems="center"
-              display="flex"
-              justifyContent="center"
-              item
-            >
-              <Container maxWidth="sm">
-                <Box textAlign="center">
-                  <TypographyPrimary variant="h1" sx={{ my: 2 }}>
-                    Tokyo Free White React Typescript Admin Dashboard
-                  </TypographyPrimary>
-                  <TypographySecondary
-                    variant="h4"
-                    fontWeight="normal"
-                    sx={{ mb: 4 }}
-                  >
-                    High performance React template built with lots of powerful
-                    Material-UI components across multiple product niches for
-                    fast &amp; perfect apps development processes.
-                  </TypographySecondary>
-                  <Button href="/overview" size="large" variant="contained">
-                    Overview
-                  </Button>
-                </Box>
-              </Container>
-            </GridWrapper>
-          </Hidden>
-        </Grid>
-      </MainContent>
+      <div className="bg-gray-200 w-full px-16 md:px-0 h-screen flex items-center justify-center">
+        <div className="bg-white border border-gray-200 flex flex-col items-center justify-center px-4 md:px-8 lg:px-24 py-8 rounded-lg shadow-2xl">
+          <p className="text-6xl md:text-7xl lg:text-9xl font-bold tracking-wider text-gray-300">500</p>
+          <p className="text-2xl md:text-3xl lg:text-5xl font-bold tracking-wider text-gray-500 mt-4">
+            Internal Server Error
+          </p>
+          <p className="text-gray-500 mt-4 pb-4 border-b-2 text-center">
+            Sorry, something went wrong. Please try again later.
+          </p>
+          <a href="#" className="flex items-center space-x-2 bg-primary hover:bg-primary text-gray-100 px-4 py-2 mt-6 rounded transition duration-150" title="Return Home">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"></path>
+            </svg>
+            <span onClick={() => {
+              history.back();
+            }}>Return Home</span>
+          </a>
+        </div>
+      </div>
     </>
   );
 }
